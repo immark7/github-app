@@ -1,4 +1,4 @@
-import { Header } from "../components/header/Header";
+import { Header } from "../components/layout/Header";
 import { AppProvider } from "../providers";
 import { GithubPage } from "./pages/GithubSearchPage";
 
