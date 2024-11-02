@@ -1,10 +1,14 @@
+import { Header } from "../components/header/Header";
+import { AppProvider } from "../providers";
+import { GithubPage } from "./pages/GithubSearchPage";
 
-function App() {
+export const App = () => {
   return (
-    <>
-      Start
-    </>
-  )
-}
-
-export default App
+    <AppProvider>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <GithubPage />
+      </div>
+    </AppProvider>
+  );
+};
