@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Header } from "../components/layout/Header";
 import { useAppSelector } from "../hooks/useAppSelector";
-import { GithubPage } from "./pages/GithubSearchPage";
+import { GithubPage } from "./pages/GithubPage";
 
 export const App = () => {
   const theme = useAppSelector((state) => state.theme.theme);
@@ -12,11 +12,9 @@ export const App = () => {
   }, [theme]);
 
   return (
-    <div className="min-h-screen h-screen flex flex-col bg-background">
+    <div className="h-screen flex flex-col">
       <Header />
-      <main className="flex-1 overflow-hidden">
-        <GithubPage />
-      </main>
+      <GithubPage />
     </div>
   );
 };

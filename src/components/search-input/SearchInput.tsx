@@ -19,11 +19,7 @@ export const SearchInput: FunctionComponent<Props> = ({
   const debouncedSearch = useCallback(
     debounce((value: string) => {
       const validQuery = value.trim();
-      if (validQuery.length === 0) {
-        onSearch("");
-      } else {
-        onSearch(validQuery);
-      }
+      onSearch(validQuery);
     }, DEBOUNCED_TIME),
     [onSearch]
   );
@@ -48,7 +44,7 @@ export const SearchInput: FunctionComponent<Props> = ({
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
-        className="pl-10 pr-3 py-2 bg-background border rounded focus:outline-none"
+        className="pl-10 pr-3 py-2 bg-background border rounded-lg focus:outline-none"
       />
     </div>
   );
