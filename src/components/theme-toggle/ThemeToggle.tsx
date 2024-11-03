@@ -2,21 +2,19 @@ import { Moon, Sun } from "lucide-react";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { toggleTheme } from "../../store/slices/themeSlice";
+import { Button } from "../ui/button/Button";
 
 export const ThemeToggle = () => {
   const dispatch = useAppDispatch();
   const theme = useAppSelector((state) => state.theme.theme);
-
+  const isDarkTheme = theme === "dark";
   return (
-    <button
-      onClick={() => dispatch(toggleTheme())}
-      className="p-2 rounded-md hover:bg-accent"
-    >
-      {theme === "dark" ? (
+    <Button variant="ghost" size="icon" onClick={() => dispatch(toggleTheme())}>
+      {isDarkTheme ? (
         <Sun className="h-5 w-5 text-foreground" />
       ) : (
         <Moon className="h-5 w-5 text-foreground" />
       )}
-    </button>
+    </Button>
   );
 };
