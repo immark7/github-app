@@ -1,7 +1,7 @@
-import React, { useState, FunctionComponent, useCallback } from "react";
-import { debounce } from "lodash";
+import { useState, FunctionComponent, useEffect } from "react";
 import { Search, Loader2 } from "lucide-react";
 import { DEBOUNCED_TIME } from "../../libs/constants";
+import { useDebounce } from "../../hooks/useDebounce";
 
 interface Props {
   onSearch: (text: string) => void;
@@ -15,20 +15,12 @@ export const SearchInput: FunctionComponent<Props> = ({
   placeholder = "Search...",
 }) => {
   const [value, setValue] = useState("");
+  const debouncedValue = useDebounce(value, DEBOUNCED_TIME);
 
-  const debouncedSearch = useCallback(
-    debounce((value: string) => {
-      const validQuery = value.trim();
-      onSearch(validQuery);
-    }, DEBOUNCED_TIME),
-    [onSearch]
-  );
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-    debouncedSearch(newValue);
-  };
+  useEffect(() => {
+    const validQuery = debouncedValue.trim();
+    onSearch(validQuery);
+  }, [debouncedValue]);
 
   return (
     <div className="relative">
@@ -42,7 +34,7 @@ export const SearchInput: FunctionComponent<Props> = ({
       <input
         type="text"
         value={value}
-        onChange={handleChange}
+        onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         className="pl-10 pr-3 py-2 bg-background border rounded-lg focus:outline-none"
       />

@@ -27,7 +27,7 @@ export const DataTable: FunctionComponent<Props> = ({
   const isEmpty = data.length === 0;
 
   return (
-    <div className="relative flex-1 flex flex-col min-h-0 border rounded-lg bg-card overflow-hidden">
+    <div className="table-container">
       <Table className="overflow-auto">
         <TableHeader className="sticky top-0 bg-card z-10">
           <TableRow>
@@ -45,10 +45,11 @@ export const DataTable: FunctionComponent<Props> = ({
         <TableBody>
           {isEmpty ? (
             <TableRow>
-              <TableCell colSpan={columns.length}>
-                <div className="h-96 flex flex-col items-center justify-center text-muted-foreground">
-                  <p>{emptyMessage}</p>
-                </div>
+              <TableCell
+                colSpan={columns.length}
+                className="h-96 flex flex-col items-center justify-center text-muted-foreground"
+              >
+                <p>{emptyMessage}</p>
               </TableCell>
             </TableRow>
           ) : (
