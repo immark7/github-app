@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent } from "react";
+import React, { useState, FunctionComponent, useCallback } from "react";
 import { debounce } from "lodash";
 import { Search, Loader2 } from "lucide-react";
 import { DEBOUNCED_TIME } from "../../libs/constants";
@@ -16,9 +16,17 @@ export const SearchInput: FunctionComponent<Props> = ({
 }) => {
   const [value, setValue] = useState("");
 
-  const debouncedSearch = debounce((query: string) => {
-    onSearch(query);
-  }, DEBOUNCED_TIME);
+  const debouncedSearch = useCallback(
+    debounce((value: string) => {
+      const validQuery = value.trim();
+      if (validQuery.length === 0) {
+        onSearch("");
+      } else {
+        onSearch(validQuery);
+      }
+    }, DEBOUNCED_TIME),
+    [onSearch]
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -40,7 +48,7 @@ export const SearchInput: FunctionComponent<Props> = ({
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
-        className="w-full pl-10 pr-3 py-2 bg-background border rounded focus:outline-none"
+        className="pl-10 pr-3 py-2 bg-background border rounded focus:outline-none"
       />
     </div>
   );
