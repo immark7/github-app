@@ -2,6 +2,11 @@
 
 A React application that allows you to search GitHub users efficiently. Built with React, TypeScript, Redux Toolkit, and Tailwind.
 
+
+
+## Live Demo
+- Visit the live application: [GitSpace](https://git-space.vercel.app/)
+
 ![image](https://github.com/user-attachments/assets/7940cfad-d7c1-4fd2-9523-da9e6b0186a8)
 
 ## Features
