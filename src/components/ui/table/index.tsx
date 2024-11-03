@@ -46,7 +46,11 @@ interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
 }
 export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
   ({ className, ...props }, ref) => (
-    <tr ref={ref} className={cn("hover:bg-muted/50 ", className)} {...props} />
+    <tr
+      ref={ref}
+      className={cn("flex items-center hover:bg-muted/50", className)}
+      {...props}
+    />
   )
 );
 
@@ -58,20 +62,19 @@ export const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
     <th
       ref={ref}
       className={cn(
-        "py-3 px-4 text-left font-medium text-muted-foreground",
+        "flex-1 py-3 px-4 text-left font-medium text-muted-foreground",
         className
       )}
       {...props}
     />
   )
 );
-TableHead.displayName = "TableHead";
 
 interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
   children: React.ReactNode;
 }
 export const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
   ({ className, ...props }, ref) => (
-    <td ref={ref} className={cn("p-4 ", className)} {...props} />
+    <td ref={ref} className={cn("flex-1 p-4 ", className)} {...props} />
   )
 );

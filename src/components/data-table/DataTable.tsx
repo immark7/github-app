@@ -9,6 +9,7 @@ import {
 } from "../ui/table";
 import { FunctionComponent } from "react";
 import { Column } from "../../libs/types";
+import { cn } from "../../libs/utils";
 
 interface Props {
   data: any[];
@@ -31,7 +32,10 @@ export const DataTable: FunctionComponent<Props> = ({
         <TableHeader className="sticky top-0 bg-card z-10">
           <TableRow>
             {columns.map((column) => (
-              <TableHead key={column.key} className="bg-muted">
+              <TableHead
+                key={column.key}
+                className={cn("bg-muted", column.className)}
+              >
                 {column.header}
               </TableHead>
             ))}
@@ -51,7 +55,7 @@ export const DataTable: FunctionComponent<Props> = ({
             data.map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column) => (
-                  <TableCell key={column.key}>
+                  <TableCell key={column.key} className={column.className}>
                     {column.render
                       ? column.render(row[column.key], row)
                       : String(row[column.key])}

@@ -1,11 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from "axios";
+import { ERROR_MESSAGES } from "../libs/constants";
 
 export class ApiService {
   protected axios: AxiosInstance;
 
   constructor(baseUrl: string) {
     this.axios = axios.create({ baseURL: baseUrl });
+    this.axios.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        const status = error?.response?.status;
+        const message = ERROR_MESSAGES[status] || ERROR_MESSAGES["Default"];
+        throw new Error(message);
+      }
+    );
   }
 
   protected async get<T>(url: string) {
