@@ -1,4 +1,4 @@
-import { GITHUB_API_URL } from "../libs/constants";
+import { GITHUB_API_URL, PAGE_SIZE } from "../libs/constants";
 import { ApiService } from "./apiService";
 
 export class GithubApiService extends ApiService {
@@ -7,9 +7,9 @@ export class GithubApiService extends ApiService {
   }
 
   public async getUsers(
-    query: string,
+    query: string = "",
     page: number = 1,
-    perPage: number = 30
+    perPage: number = PAGE_SIZE
   ): Promise<any> {
     const queryString = `/search/users?q=${query}&per_page=${perPage}&page=${page}`;
     return await this.get(queryString);
