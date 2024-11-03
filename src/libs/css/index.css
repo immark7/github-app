@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99.0%; 
+    --background: 0 0% 99.0%;
     --foreground: 0 0% 9.0%;
     --muted: 0 0% 95.1%;
     --muted-foreground: 0 0% 43.5%;
@@ -31,7 +31,7 @@
     --colors-gray1: hsl(0 0% 99.0%);
     --colors-gray2: hsl(0 0% 97.3%);
     --colors-gray3: hsl(0 0% 95.1%);
-    --colors-gray4: hsl(0 0% 93.0%);
+    --colors-gray4: hsl(0 0% 93.0%/home/mark/Downloads/git-icon-logo-svgrepo-com.svg);
     --colors-gray5: hsl(0 0% 90.9%);
     --colors-gray6: hsl(0 0% 88.7%);
     --colors-gray7: hsl(0 0% 85.8%);
@@ -124,7 +124,7 @@
     --shadows-large: 0 30px 60px rgba(0, 0, 0, 0.12)
   }
 
- 
+
   .dark {
     --background: 0 0% 8.5%;
     --foreground: 0 0% 93.0%;
@@ -145,7 +145,7 @@
     --destructive: 4 84% 50%;
     --destructive-foreground: 0 0% 93.0%;
     --ring: 0 0% 31.2%;
-    
+
     /* Custom */
     --colors-gray1: hsl(0 0% 8.5%);
     --colors-gray2: hsl(0 0% 11.0%);
@@ -237,10 +237,23 @@
   }
 }
 
+@layer components {
+  .layout-container {
+    @apply flex flex-col flex-1 p-6 space-y-4 overflow-hidden;
+  }
+
+
+  .table-container {
+    @apply relative flex-1 flex flex-col min-h-0 border rounded-lg bg-card overflow-hidden;
+  }
+}
+
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
