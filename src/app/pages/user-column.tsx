@@ -5,7 +5,7 @@ export const USER_COLUMNS = [
   {
     header: "User",
     key: "login",
-    className: "flex-[1.5]",
+    className: "min-w-52",
     render: (value: string, user: GitHubUser) => (
       <a
         href={user.html_url}

@@ -26,7 +26,7 @@ export const Pagination: FunctionComponent<Props> = ({
   const isLastPage = currentPage === totalPages;
 
   return (
-    <div className="flex items-center justify-between py-3 px-2">
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between py-3 px-2">
       <span className="text-sm text-muted-foreground">
         Showing {startIndex} - {endIndex} of {totalItems}
       </span>
