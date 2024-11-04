@@ -9,6 +9,7 @@ import { TableParams } from "../../libs/types";
 import { USER_COLUMNS } from "./user-column";
 import { ErrorMessage } from "../../components/error-message/ErrorMessage";
 import { getTableMessage } from "../../libs/utils";
+import { MIN_SEARCH_CHARACTERS } from "../../libs/constants";
 
 export const GithubPage = () => {
   const dispatch = useAppDispatch();
@@ -49,7 +50,8 @@ export const GithubPage = () => {
         <SearchInput
           onSearch={handleSearch}
           isLoading={isLoading}
-          placeholder="Search users..."
+          minCharacters={MIN_SEARCH_CHARACTERS}
+          placeholder="Enter at least 3 characters to search users..."
         />
         <ErrorMessage message={error} className="w-fit" />
       </div>

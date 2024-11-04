@@ -11,9 +11,9 @@ export const ThemeToggle = () => {
   return (
     <Button variant="ghost" size="icon" onClick={() => dispatch(toggleTheme())}>
       {isDarkTheme ? (
-        <Sun className="h-5 w-5 text-foreground" />
-      ) : (
         <Moon className="h-5 w-5 text-foreground" />
+      ) : (
+        <Sun className="h-5 w-5 text-foreground" />
       )}
     </Button>
   );
